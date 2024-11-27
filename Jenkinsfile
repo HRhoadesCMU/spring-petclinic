@@ -19,7 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh './mvnw site'
-                sh 'java -jar target/*.jar'
+                sh 'java -jar target/*.jar --server.port=8081'
             }
         }
     }
