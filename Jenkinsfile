@@ -19,6 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh './mvnw site'
+                sh 'java -jar target/*.jar'
             }
         }
     }
