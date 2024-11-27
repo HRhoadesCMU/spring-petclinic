@@ -17,7 +17,9 @@ pipeline {
             }
         }
         stage('Deploy') {
-            sh 'mvn site'
+            steps {
+                sh 'mvn site'
+            }
         }
     }
 }
