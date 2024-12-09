@@ -3,10 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                //sh './mvnw clean compile'
-                withSonarQubeEnv(installationName: 'sonar_qube') {
-                    sh './mvnw clean compile sonar:sonar'
-                }
+                sh './mvnw clean compile'
             }
         }
         stage('Test') {
@@ -21,8 +18,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh './mvnw site'
-                sh 'java -jar target/*.jar --server.port=8081'
+                sh './mvnw deploy'
+                //sh './mvnw site'
+                //sh 'java -jar target/*.jar --server.port=8081'
             }
         }
     }
