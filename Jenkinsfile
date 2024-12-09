@@ -19,7 +19,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh './mvnw deploy'
+                ansible(playbook: '/vagrant/deployment_playbook.yml', inventory: '/etc/ansible/hosts')
+                //sh './mvnw deploy'
                 //sh './mvnw site'
                 //sh 'java -jar target/*.jar --server.port=8081'
             }
